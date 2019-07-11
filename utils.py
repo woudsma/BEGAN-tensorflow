@@ -78,7 +78,6 @@ def make_grid(tensor, nrow=8, padding=2,
 
 def save_image(tensor, filename, nrow=8, padding=2,
                normalize=False, scale_each=False):
-    print(tensor.shape, filename)
     for i in range(tensor.shape[0]):
        imsave('%s-%d.png' % (filename, i),
             tensor[i, :, :, 0],
