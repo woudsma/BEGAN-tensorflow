@@ -7,7 +7,7 @@ def get_loader(root, batch_size, scale_size, data_format, split=None, is_graysca
     dataset_name = os.path.basename(root)
     if dataset_name in ['CelebA'] and split:
         root = os.path.join(root, 'splits', split)
-    elif
+    else:
         root = os.path.join(root, 'splits', split)
 
     for ext in ["jpg", "png"]:
