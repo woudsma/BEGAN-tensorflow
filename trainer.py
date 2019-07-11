@@ -157,7 +157,8 @@ class Trainer(object):
                       format(step, self.max_step, d_loss, g_loss, measure, k_t))
 
             # if step % (self.log_step * 2) == 0:
-            x_fake = self.generate(z_fixed, self.model_dir, idx=step)
+            # os.makedirs(os.path.join(config.log_dir, 'frames'))
+            x_fake = self.generate(z_fixed, self.model_dir + '/frames', idx=step)
             self.autoencode(x_fixed, self.model_dir, idx=step, x_fake=x_fake)
 
             if step % self.lr_update_step == self.lr_update_step - 1:

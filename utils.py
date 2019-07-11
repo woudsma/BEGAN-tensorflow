@@ -40,7 +40,6 @@ def prepare_dirs_and_logger(config):
     for path in [config.log_dir, config.data_dir, config.model_dir]:
         if not os.path.exists(path):
             os.makedirs(path)
-        os.makedirs(os.path.join(config.log_dir, 'frames'))
 
 def get_time():
     return datetime.now().strftime("%m%d_%H%M%S")
