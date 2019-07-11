@@ -160,7 +160,7 @@ class Trainer(object):
 
             # if step % (self.log_step * 2) == 0:
             # os.makedirs(os.path.join(config.log_dir, 'frames'))
-            if step % self.batch_size == 0:
+            if step % 2 == 0:
                 x_fake = self.generate(z_fixed, self.model_dir, idx=step)
                 self.autoencode(x_fixed, self.model_dir, idx=step, x_fake=x_fake)
 
@@ -250,7 +250,7 @@ class Trainer(object):
     def generate(self, inputs, root_path=None, path=None, idx=None, save=True):
         x = self.sess.run(self.G, {self.z: inputs})
         if path is None and save:
-            path = os.path.join(root_path, '{}_G.png'.format(idx))
+            path = os.path.join(root_path, '{}_G'.format(idx))
             save_image(x, path)
             print("[*] Samples saved: {}".format(path))
         return x
