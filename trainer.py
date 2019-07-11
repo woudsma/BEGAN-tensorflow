@@ -160,9 +160,9 @@ class Trainer(object):
 
             # if step % (self.log_step * 2) == 0:
             # os.makedirs(os.path.join(config.log_dir, 'frames'))
-
-            x_fake = self.generate(z_fixed, self.model_dir, idx=step)
-            self.autoencode(x_fixed, self.model_dir, idx=step, x_fake=x_fake)
+            if step % self.batch_size == 0:
+                x_fake = self.generate(z_fixed, self.model_dir, idx=step)
+                self.autoencode(x_fixed, self.model_dir, idx=step, x_fake=x_fake)
 
             if step % self.lr_update_step == self.lr_update_step - 1:
                 self.sess.run([self.g_lr_update, self.d_lr_update])
