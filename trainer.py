@@ -77,8 +77,8 @@ class Trainer(object):
 
         self.model_dir = config.model_dir
         self.load_path = config.load_path
-        if not os.path.exists(self.model_dir + '/frames'):
-            os.makedirs(self.model_dir + '/frames')
+        # if not os.path.exists(self.model_dir + '/frames'):
+        #     os.makedirs(self.model_dir + '/frames')
 
         self.use_gpu = config.use_gpu
         self.data_format = config.data_format
@@ -161,7 +161,7 @@ class Trainer(object):
             # if step % (self.log_step * 2) == 0:
             # os.makedirs(os.path.join(config.log_dir, 'frames'))
 
-            x_fake = self.generate(z_fixed, self.model_dir + '/frames', idx=step)
+            x_fake = self.generate(z_fixed, self.model_dir, idx=step)
             self.autoencode(x_fixed, self.model_dir, idx=step, x_fake=x_fake)
 
             if step % self.lr_update_step == self.lr_update_step - 1:
@@ -266,7 +266,7 @@ class Trainer(object):
             if img.shape[3] in [1, 3]:
                 img = img.transpose([0, 3, 1, 2])
 
-            x_path = os.path.join(path, '{}_D_{}.png'.format(idx, key))
+            x_path = os.path.join(path, '{}_D_{}'.format(idx, key))
             x = self.sess.run(self.AE_x, {self.x: img})
             save_image(x, x_path)
             print("[*] Samples saved: {}".format(x_path))
