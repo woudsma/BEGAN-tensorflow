@@ -246,7 +246,7 @@ class Trainer(object):
     def generate(self, inputs, root_path=None, path=None, idx=None, save=True):
         x = self.sess.run(self.G, {self.z: inputs})
         if path is None and save:
-            path = os.path.join(root_path, '{}_G.png'.format(idx))
+            path = os.path.join(root_path, 'frames/{}_G.png'.format(idx))
             save_image(x, path)
             print("[*] Samples saved: {}".format(path))
         return x
@@ -262,7 +262,7 @@ class Trainer(object):
             if img.shape[3] in [1, 3]:
                 img = img.transpose([0, 3, 1, 2])
 
-            x_path = os.path.join(path, '{}_D_{}.png'.format(idx, key))
+            x_path = os.path.join(path, 'frames/{}_D_{}.png'.format(idx, key))
             x = self.sess.run(self.AE_x, {self.x: img})
             save_image(x, x_path)
             print("[*] Samples saved: {}".format(x_path))
