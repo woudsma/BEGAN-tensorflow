@@ -155,7 +155,7 @@ class Trainer(object):
                 d_loss = result['d_loss']
                 k_t = result['k_t']
 
-                print("[{}/{}] Loss_D: {:.6f} Loss_G: {:.6f} measure: {:.4f}, k_t: {:.4f}". \
+                print("\n[{}/{}] Loss_D: {:.6f} Loss_G: {:.6f} measure: {:.4f}, k_t: {:.4f}". \
                       format(step, self.max_step, d_loss, g_loss, measure, k_t))
 
             # if step % (self.log_step * 2) == 0:
@@ -251,8 +251,8 @@ class Trainer(object):
         x = self.sess.run(self.G, {self.z: inputs})
         if path is None and save:
             path = os.path.join(root_path, '{}_G'.format(idx))
-            save_image(x, path)
-            print("[*] Samples saved: {}".format(path))
+            # save_image(x, path)
+            # print("[*] Samples saved: {}".format(path))
         return x
 
     def autoencode(self, inputs, path, idx=None, x_fake=None):
@@ -269,7 +269,7 @@ class Trainer(object):
             x_path = os.path.join(path, '{}_D_{}'.format(idx, key))
             x = self.sess.run(self.AE_x, {self.x: img})
             save_image(x, x_path)
-            print("[*] Samples saved: {}".format(x_path))
+            # print("[*] Samples saved: {}".format(x_path))
 
     def encode(self, inputs):
         if inputs.shape[3] in [1, 3]:
