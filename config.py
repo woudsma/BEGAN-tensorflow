@@ -24,9 +24,9 @@ net_arg.add_argument('--z_num', type=int, default=64, choices=[64, 128])
 data_arg = add_argument_group('Data')
 data_arg.add_argument('--dataset', type=str, default='CelebA')
 data_arg.add_argument('--split', type=str, default='train')
-data_arg.add_argument('--batch_size', type=int, default=4)
+data_arg.add_argument('--batch_size', type=int, default=1)
 data_arg.add_argument('--grayscale', type=str2bool, default=True)
-data_arg.add_argument('--num_worker', type=int, default=8)
+data_arg.add_argument('--num_worker', type=int, default=4)
 
 # Training / test parameters
 train_arg = add_argument_group('Training')
@@ -40,7 +40,7 @@ train_arg.add_argument('--lr_lower_boundary', type=float, default=0.00002)
 train_arg.add_argument('--beta1', type=float, default=0.5)
 train_arg.add_argument('--beta2', type=float, default=0.999)
 train_arg.add_argument('--gamma', type=float, default=0.5)
-train_arg.add_argument('--lambda_k', type=float, default=0.0015)
+train_arg.add_argument('--lambda_k', type=float, default=0.001)
 train_arg.add_argument('--use_gpu', type=str2bool, default=True)
 
 # Misc
