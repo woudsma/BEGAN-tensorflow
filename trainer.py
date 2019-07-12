@@ -251,7 +251,7 @@ class Trainer(object):
         x = self.sess.run(self.G, {self.z: inputs})
         if path is None and save:
             path = os.path.join(root_path, '{}_G'.format(idx))
-            # save_image(x, path)
+            save_image(x, path)
             # print("[*] Samples saved: {}".format(path))
         return x
 
