@@ -82,7 +82,7 @@ def save_image(tensor, filename, nrow=8, padding=2,
        imsave('%s-%06d.png' % (filename, i),
             tensor[i, :, :, 0],
             cmap='gray')
-        print('Saved %d images' % tensor.shape[0])
+    # print('Saved %d images' % tensor.shape[0])
     # ndarr = make_grid(tensor, nrow=nrow, padding=padding,
     #                         normalize=normalize, scale_each=scale_each)
     # im = Image.fromarray(ndarr)
